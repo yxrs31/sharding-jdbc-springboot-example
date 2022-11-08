@@ -20,14 +20,22 @@ class MasterSlaveTests {
     @Test
     void addUser() throws Exception {
         User user = new User();
-        user.setName("刘备");
+        user.setName("永琪");
         user.setAge(28);
-        user.setAddress("蜀国");
+        user.setAddress("故宫");
         userService.addUser(user);
     }
     @Test
     void getUserList() throws Exception {
-        List<User> userList = userService.selectLikeName("刘");
-        userList.forEach(System.out::println);
+        for(int i=1;i<=100;i++){
+            System.out.print(i+": ");
+            List<User> userList = userService.selectLikeName("永琪");
+            if(userList.isEmpty()){
+                System.out.println("null");
+            }else{
+                userList.forEach(System.out::println);
+            }
+        }
+
     }
 }
